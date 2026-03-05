@@ -1,4 +1,4 @@
-# Monthly Saving Challenge (Monzo-style Nudges)
+# Ouch Savings 
 
 A simple behavioural finance tool that helps users track monthly savings
 and generates motivational WhatsApp reminders.
