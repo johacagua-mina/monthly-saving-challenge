@@ -35,10 +35,13 @@ with tab2:
 
         st.write(f"Target: £{target}")
         st.write(f"Saved: £{actual}")
-
         st.progress(min(progress, 1.0))
         st.write(f"Progress: {progress:.0%}")
-        
+
+        if actual >= target:
+            st.success("Goal achieved! 🎉")
+        else:
+            st.warning("Keep saving! You're almost there 💪")
 
         mood = st.selectbox("Mood", ["sarcastic_coach", "supportive", "neutral"], index=0)
 
@@ -48,8 +51,6 @@ with tab2:
 
             st.text_area("Copy/paste to WhatsApp", value=n.message, height=140)
             st.write("✅ Logged to `data/reminders.csv`")
-    st.write(
-    "Track your monthly savings and receive slightly sarcastic behavioural nudges to stay financially disciplined."
-)   
-    usd_value = convert_gbp(actual, "USD")
-    st.write(f"Approx value in USD: ${usd_value:.2f}")         
+
+        usd_value = convert_gbp(actual, "USD")
+        st.write(f"Approx value in USD: ${usd_value:.2f}")
