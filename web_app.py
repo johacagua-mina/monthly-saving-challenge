@@ -2,15 +2,9 @@ import streamlit as st
 from savings import load_data, upsert_month
 from nudges import generate_nudge, log_reminder
 
-st.set_page_config(page_title="Monthly Saving Challenge", page_icon="💸", layout="centered")
-st.title("💸 Monthly Saving Challenge")
-st.write("If you can see this, Streamlit is working ✅")
-st.info("Next: connect this UI to savings.csv and reminders.csv")
-
 st.set_page_config(page_title="OuchSavings", page_icon="💸")
-
 st.title("OuchSavings 💸")
-st.caption("Monzo-style savings challenge with emotionally-driven WhatsApp nudges.")
+st.caption("Behavioural finance savings tracker with motivational WhatsApp nudges.")
 
 tab1, tab2 = st.tabs(["Add / Update month", "Generate WhatsApp nudge"])
 
@@ -45,3 +39,6 @@ with tab2:
 
             st.text_area("Copy/paste to WhatsApp", value=n.message, height=140)
             st.write("✅ Logged to `data/reminders.csv`")
+    st.write(
+    "Track your monthly savings and receive slightly sarcastic behavioural nudges to stay financially disciplined."
+)        
