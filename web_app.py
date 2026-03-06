@@ -1,3 +1,4 @@
+from exchange_api import convert_gbp
 import streamlit as st
 from savings import load_data, upsert_month
 from nudges import generate_nudge, log_reminder
@@ -12,7 +13,7 @@ with tab1:
     st.subheader("Add / Update month")
     month = st.text_input("Month (YYYY-MM)", value="2026-03")
     target = st.number_input("Monthly target (£)", min_value=0.0, value=200.0, step=10.0)
-    actual = st.number_input("Actual saved (£)", min_value=0.0, value=120.0, step=10.0)
+    actual = float(row["actual"])
 
     if st.button("Save ✅"):
         upsert_month(month.strip(), float(target), float(actual))
@@ -49,4 +50,6 @@ with tab2:
             st.write("✅ Logged to `data/reminders.csv`")
     st.write(
     "Track your monthly savings and receive slightly sarcastic behavioural nudges to stay financially disciplined."
-)        
+)   
+    usd_value = convert_gbp(actual, "USD")
+    st.write(f"Approx value in USD: ${usd_value:.2f}")         
