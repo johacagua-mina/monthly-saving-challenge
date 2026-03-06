@@ -13,7 +13,7 @@ with tab1:
     st.subheader("Add / Update month")
     month = st.text_input("Month (YYYY-MM)", value="2026-03")
     target = st.number_input("Monthly target (£)", min_value=0.0, value=200.0, step=10.0)
-    actual = float(row["actual"])
+    actual = st.number_input("Actual saved (£)", min_value=0.0, value=120.0, step=10.0)
 
     if st.button("Save ✅"):
         upsert_month(month.strip(), float(target), float(actual))
