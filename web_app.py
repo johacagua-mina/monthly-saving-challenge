@@ -30,6 +30,14 @@ with tab2:
         row = df[df["month"] == pick].iloc[0]
         target = float(row["target"])
         actual = float(row["actual"])
+        progress = actual / target if target > 0 else 0
+
+        st.write(f"Target: £{target}")
+        st.write(f"Saved: £{actual}")
+
+        st.progress(min(progress, 1.0))
+        st.write(f"Progress: {progress:.0%}")
+        
 
         mood = st.selectbox("Mood", ["sarcastic_coach", "supportive", "neutral"], index=0)
 
